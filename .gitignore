@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.databricks/
+*.log
+.airflow/
+secrets/
+terraform.tfstate
+terraform.tfstate.*
+*.tfvars

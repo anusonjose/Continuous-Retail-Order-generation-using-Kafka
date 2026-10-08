@@ -1,0 +1,18 @@
+bundle:
+  name: azure-databricks-kafka-airflow
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    default: retail_catalog
+  schema:
+    default: retail
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://<your-databricks-workspace>.azuredatabricks.net

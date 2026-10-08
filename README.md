@@ -201,10 +201,6 @@ Run:
 python producer/kafka_order_producer.py
 ```
 
-## Interview explanation
-
-"I designed a real-time retail data platform on Azure. Orders are published through the Kafka-compatible endpoint of Azure Event Hubs. Databricks Structured Streaming consumes the events and writes raw data to the Bronze Delta layer in ADLS Gen2. Silver applies schema validation, deduplication and business transformations. Gold produces customer, product and revenue aggregates. Apache Airflow orchestrates Databricks jobs, data quality checks and scheduled batch workloads. Unity Catalog provides governance and access control. The solution uses checkpoints and Delta transactions to provide reliable processing and prevent duplicate results."
-
 ## Production improvements
 
 - Use Event Hubs Capture for replay/backup if required.

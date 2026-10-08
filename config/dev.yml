@@ -1,0 +1,14 @@
+environment: dev
+
+catalog: retail_catalog
+schema: retail
+
+kafka:
+  topic: retail-orders
+
+paths:
+  checkpoint_bronze: /Volumes/retail_catalog/retail/checkpoints/orders_bronze
+  checkpoint_silver: /Volumes/retail_catalog/retail/checkpoints/orders_silver
+  bronze: /Volumes/retail_catalog/retail/bronze/orders
+  silver: /Volumes/retail_catalog/retail/silver/orders
+  gold: /Volumes/retail_catalog/retail/gold

@@ -1,0 +1,32 @@
+resources:
+  jobs:
+    retail_streaming_job:
+      name: retail-kafka-streaming
+      max_concurrent_runs: 1
+
+      tasks:
+        - task_key: bronze
+          spark_python_task:
+            python_file: ../src/01_stream_bronze.py
+          job_cluster_key: streaming_cluster
+
+        - task_key: silver
+          depends_on:
+            - task_key: bronze
+          spark_python_task:
+            python_file: ../src/02_stream_silver.py
+          job_cluster_key: streaming_cluster
+
+        - task_key: gold
+          depends_on:
+            - task_key: silver
+          spark_python_task:
+            python_file: ../src/03_gold_aggregations.py
+          job_cluster_key: streaming_cluster
+
+      job_clusters:
+        - job_cluster_key: streaming_cluster
+          new_cluster:
+            spark_version: 15.4.x-scala2.12
+            node_type_id: Standard_DS3_v2
+            num_workers: 2
